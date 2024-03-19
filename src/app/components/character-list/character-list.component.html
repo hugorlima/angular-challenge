@@ -1,0 +1,30 @@
+<h2>Lista de heróis</h2>
+
+<div class="card">
+  <p-table [value]="heroes" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+    [tableStyle]="{ 'min-width': '50rem' }"
+    currentPageReportTemplate="Mostrando {first} até {last} de {totalRecords} heróis"
+    [rowsPerPageOptions]="[5, 10, 20]">
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="name" style="width:20%">Nome <p-sortIcon field="name"></p-sortIcon></th>
+        <th>Descrição</th>
+        <th>Imagem</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-heroe>
+      <tr>
+        <td>{{heroe.name}}</td>
+        <td>{{heroe.description}}</td>
+        <td><img src="{{heroe.thumbnail.path + '.' + heroe.thumbnail.extension}}" alt="" width="72px" height="72px">
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="paginatorleft">
+      <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+    </ng-template>
+    <ng-template pTemplate="paginatorright">
+      <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+    </ng-template>
+  </p-table>
+</div>
